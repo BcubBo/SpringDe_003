@@ -1,15 +1,19 @@
 package biz;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
 import dao.DaoFactory;
 import dao.ITestBiz;
 import dao.ITestDao;
 import dao.TestDao;
+@Scope("prototype")
 @Service("testBiz")//等同于:<bean id="testBiz" class=""/>
 public class TestBiz implements ITestBiz{
 	@Autowired
+	@Qualifier("testDao")
 	private ITestDao dao;
 	
 	public String testBiz(String msg,Object result)throws Exception {

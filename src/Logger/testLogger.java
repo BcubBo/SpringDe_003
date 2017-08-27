@@ -8,18 +8,28 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.core.Logger;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.After;
+import org.aspectj.lang.annotation.AfterReturning;
+import org.aspectj.lang.annotation.AfterThrowing;
+import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
 
 
-
+@Aspect
 public class testLogger {
 	Logger logger = (Logger)LogManager.getLogger();//log4j2.x
 	//Logger logger = Logger.getLogger(TestBiz.class);//log4j1.x
+	
+	@Before("execution(public * biz..*(..))")
 	public void beforeLogger(JoinPoint jp) {
 		System.out.println("=======================================");
 		System.out.println(jp.getTarget()+"\n"+jp.getSignature().getName()+"\n"+jp.getArgs()[0]);
 		logger.info("方法执行前");
 	}
-	
+	@AfterReturning(pointcut="execution(public * biz..*(..))",
+			returning="result")
+	//注解声明
 	public void afterReturningLogger(JoinPoint jp,Object result) {
 		System.out.println("=======================================");
 		logger.info("方法执行结束后");
@@ -30,7 +40,7 @@ public class testLogger {
 		
 		
 	}//
-	
+	@Around("execution(public * biz..*(..))")
 	public Object around(ProceedingJoinPoint jp) {
 		
 		logger.info("开始执行方法, message, p0, p1, p2, p3, p4, p5, p6, p7");
@@ -64,6 +74,8 @@ public class testLogger {
 		
 	}
 	//
+	@AfterThrowing(pointcut="execution(public * biz..*(..))",
+			throwing="e")
 	public void afterThrowing(JoinPoint jp,Exception e) {
 		
 		logger.info("方法执行出现异常:"+e.getMessage());
