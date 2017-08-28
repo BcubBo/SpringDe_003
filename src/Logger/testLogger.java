@@ -32,14 +32,14 @@ public class testLogger {
 	public void beforeLogger(JoinPoint jp) {
 		System.out.println("=======================================");
 		System.out.println(jp.getTarget()+"\n"+jp.getSignature().getName()+"\n"+jp.getArgs()[0]);
-		logger.info("方法执行前");
+		logger.debug("方法执行前");
 	}
 	@AfterReturning(pointcut="pointcut()",
 			returning="result")
 	//注解声明
 	public void afterReturningLogger(JoinPoint jp,Object result) {
 		System.out.println("=======================================");
-		logger.info("方法执行结束后");
+		logger.debug("方法执行结束后");
 		System.out.println(jp.getTarget()+"\n"+jp.getSignature().getName()+"\n"+jp.getArgs()[0]+
 				" 返回:"+result);
 		
@@ -50,7 +50,7 @@ public class testLogger {
 	@Around("pointcut()")
 	public Object around(ProceedingJoinPoint jp) {
 		
-		logger.info("开始执行方法, message, p0, p1, p2, p3, p4, p5, p6, p7");
+		logger.debug("开始执行方法, message, p0, p1, p2, p3, p4, p5, p6, p7");
 		boolean canExec = false;
 		//返回Object对象
 		//set canExec
@@ -85,14 +85,14 @@ public class testLogger {
 			throwing="e")
 	public void afterThrowing(JoinPoint jp,Exception e) {
 		
-		logger.info("方法执行出现异常:"+e.getMessage());
+		logger.debug("方法执行出现异常:"+e.getMessage());
 	}
 	//后置异常
 	
 	public void after(JoinPoint jp) {
 		//finally块的类似实现
 		
-		logger.info("始终执行的块");
+		logger.debug("始终执行的块");
 		
 		
 	}
