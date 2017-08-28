@@ -21,41 +21,41 @@
 	</bean>
 	<bean id="testLogger" class="Logger.testLogger"></bean>
 	<!-- 暂时注销aop切面部分配置，关注焦点回到注入上 -->
-<!-- 	<aop:config proxy-target-class="true">
+	<aop:config proxy-target-class="true">
 		<aop:pointcut expression="execution(public * biz..*(..))" id="pointcut"/>
 		<aop:aspect ref="testLogger">
 			<aop:before method="beforeLogger" pointcut-ref="pointcut"/>
 			<aop:after-returning method="afterReturningLogger" pointcut-ref="pointcut"
 			returning="result"/>
 		</aop:aspect>
-	</aop:config> -->
+	</aop:config>
 	<!-- 环绕通知 -->
-<!-- 	<aop:config proxy-target-class="true">
+	<aop:config proxy-target-class="true">
 		<aop:pointcut expression="execution(public * biz..*(..))" id="pointcut"/>
 		<aop:aspect ref="testLogger">
 			<aop:around method="around" pointcut-ref="pointcut"/>
 		</aop:aspect>
-	</aop:config>	 -->
+	</aop:config>	
 	<!-- 后置异常 -->
 	<!-- 切点引用-->
 	<!-- 增强部分 -->
-<!-- 	<aop:config proxy-target-class="true">
+	<aop:config proxy-target-class="true">
 		<aop:aspect ref="testLogger">
 			<aop:pointcut expression="execution(public * biz..*(..))" id="pointcut"/>
 			<aop:after-throwing method="afterThrowing" pointcut-ref="pointcut" throwing="e"/>
 			<aop:after method="after" pointcut-ref="pointcut" />
 		</aop:aspect>
-	</aop:config> -->
+	</aop:config>
 	<!-- 类似finally块的使用 -->
 	<!-- 切点引用 -->
 	<!-- 增强部分 -->
-<!-- 	<aop:config proxy-target-class="true">
+	<aop:config proxy-target-class="true">
 		<aop:aspect ref="testLogger">
 			<aop:pointcut expression="execution(public * biz..*(..))" id="pointcut"/>
 			<aop:after-throwing method="afterThrowing" pointcut-ref="pointcut" throwing="e"/>
 			<aop:after method="after" pointcut-ref="pointcut" />
 		</aop:aspect>
-	</aop:config> -->
+	</aop:config>
 	<!-- 使用advisor默认原始增强方式 -->
     <aop:config>
     	<aop:aspect ref="testLogger">
@@ -64,16 +64,16 @@
     	</aop:aspect>
     </aop:config>
     
-<!--<bean id="beforeLogger" class="Logger.BeforeLogger"></bean>
+<bean id="beforeLogger" class="Logger.BeforeLogger"></bean>
 	<bean id="afterLogger" class="Logger.AfterLogger"></bean>
 	<bean id="aroundLogger" class="Logger.AroundLogger"></bean>
 	<bean id="afterThrowing" class="Logger.AfterThrowingLogger"></bean>
     <aop:config proxy-target-class="true">
-    通过Schema将POJO的方法指定为增强
+    <!-- 通过Schema将POJO的方法指定为增强 -->
     	<aop:pointcut expression="execution(public * biz..*(..))" id="pointcut"/>
     	<aop:advisor advice-ref="beforeLogger" pointcut-ref="pointcut"/>
     	<aop:advisor advice-ref="afterLogger" pointcut-ref="pointcut"/>
     	<aop:advisor advice-ref="aroundLogger" pointcut-ref="pointcut"/>
     	<aop:advisor advice-ref="afterThrowing" pointcut-ref="pointcut" />
-    </aop:config> -->
+    </aop:config>
 </beans>
