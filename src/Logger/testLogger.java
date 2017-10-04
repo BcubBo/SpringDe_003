@@ -50,7 +50,7 @@ public class testLogger {
 	@Around("pointcut()")
 	public Object around(ProceedingJoinPoint jp) {
 		
-		logger.debug("开始执行方法, message, p0, p1, p2, p3, p4, p5, p6, p7");
+		logger.debug("开始执行方法使用注解的方式进行环绕注入方法切面");
 		boolean canExec = false;
 		//返回Object对象
 		//set canExec
@@ -73,7 +73,7 @@ public class testLogger {
 			e.printStackTrace();
 		}
 
-		logger.info("方法执行完毕, message, p0, p1, p2, p3, p4, p5, p6, p7");
+		logger.info("方法执行完毕环绕方法");
 		return result;
 		
 		

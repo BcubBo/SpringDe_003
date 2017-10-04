@@ -27,7 +27,7 @@
 	<classpathentry kind="lib" path="lib/spring-beans-3.2.9.RELEASE.jar"/>
 	<classpathentry kind="lib" path="lib/spring-context-3.2.9.RELEASE-javadoc.jar"/>
 	<classpathentry kind="lib" path="lib/spring-context-3.2.9.RELEASE-sources.jar"/>
-	<classpathentry kind="lib" path="lib/spring-context-3.2.9.RELEASE.jar"/>
+	<classpathentry kind="lib" path="lib/spring-context-3.2.9.RELEASE.jar" sourcepath="lib/spring-context-3.2.9.RELEASE-sources.jar"/>
 	<classpathentry kind="lib" path="lib/spring-core-3.2.9.RELEASE-javadoc.jar"/>
 	<classpathentry kind="lib" path="lib/spring-core-3.2.9.RELEASE-sources.jar"/>
 	<classpathentry kind="lib" path="lib/spring-core-3.2.9.RELEASE.jar"/>
